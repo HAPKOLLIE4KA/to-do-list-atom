@@ -1,4 +1,3 @@
-checkIsEmptyTasksContainer();
 
 document.addEventListener("DOMContentLoaded", () => {
     insertInContainerAllTasksFromLocalStorage();

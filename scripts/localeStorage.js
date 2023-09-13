@@ -37,9 +37,11 @@ function parseObjectInHtmlElement(obj) {
 
 function insertInContainerAllTasksFromLocalStorage() {
     const dataTasks = getAllElemntsFromLocalStorage()
-    
-    dataTasks.forEach(task => {
-        const taskHtml = parseObjectInHtmlElement(task);
-        tasksContainer.append(taskHtml);
-    })
+    if (dataTasks !== null) {
+        dataTasks.forEach(task => {
+            const taskHtml = parseObjectInHtmlElement(task);
+            tasksContainer.append(taskHtml);
+        })
+    }
+   
 }
