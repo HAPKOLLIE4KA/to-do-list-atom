@@ -84,7 +84,7 @@ function generateError() {
     if (body.getElementsByClassName("error")[0] !== undefined) return
     const error = document.createElement('div');
     error.className = "error"
-    error.innerHTML = "Введите хотя бы название задачи"
+    error.innerHTML = "Введите название задачи"
     body.prepend(error);
 
     setTimeout(() => {
@@ -97,13 +97,13 @@ function generateError() {
 
 deleteFirstBtn.addEventListener("click", () => {
     zeroingClassNamesTasks();
-    deleteTask(allTasks[0]);
+    if (allTasks.length) deleteTask(allTasks[0]);
     
 })
 
 deleteLastBtn.addEventListener('click', () => {
     zeroingClassNamesTasks();
-    deleteTask(allTasks[allTasks.length - 1]);
+    if (allTasks.length) deleteTask(allTasks[allTasks.length - 1]);
 })
 
 selectOddBtn.addEventListener('click', () => {

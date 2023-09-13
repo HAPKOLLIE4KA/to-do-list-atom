@@ -216,9 +216,9 @@
   height: 50px;
   color: var(--white);
   background-color: var(--red);
-  font-size: 18px;
+  font-size: 25px;
   text-align: center;
-  padding: 10px;
+  padding: 6px;
   animation: showError 1s ease-in-out;
 }
 
