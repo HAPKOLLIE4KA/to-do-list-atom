@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/app.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <h1 class="head">TO-DO LIST</h1>
+        <div class="menu">
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <button class="menu_btn" id="even_btn">Выделить чётные</button>
+                </li>
+                <li class="menu__item">
+                    <button class="menu_btn" id="odd_btn">Выделить нечётные</button>
+                </li>
+                <li class="menu__item">
+                    <button class="menu_btn" id="delete_select">Убрать выделение</button>
+                </li>
+                <li class="menu__item">
+                    <button class="menu_btn" id="delete_first">Удалить первый</button>
+                </li>
+                <li class="menu__item">
+                    <button class="menu_btn" id="delete_last">Удалить последний</button>
+                </li>
+            </ul>
+        </div>
+        <div class="tasks_menu">
+            <form class="tasks_menu_form">
+                <input class="task_menu_input input_name" placeholder="Название задачи"/>
+                <input class="task_menu_input input_description" placeholder="Описание задачи"/>
+                <button class="tasks_menu_add_button">Добавить</button>
+            </form>
+        </div>
+        <div class="tasks_container">
+            <div class="tasks_container_empty_txt">Список задач пуст</div>
+        </div>
+    </div>
+    <script src="./scripts/htmlElements.js"></script>
+    <script src="./scripts/localeStorage.js"></script>
+    <script src="./scripts/index.js"></script>
+
+</body>
+</html>

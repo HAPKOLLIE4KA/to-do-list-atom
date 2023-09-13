@@ -1,0 +1,314 @@
+:root {
+  --white: #ffffff;
+  --orange: #bb8c5f;
+  --dark-orange: #524336;
+  --black-100: #18181b;
+  --black-50: #252532;
+  --red: #ff0000;
+  --green: #50c878;
+  --gray: #7e7a7a;
+  --light-gray: #aaa5a5;
+  --voilet: #8732c1;
+  --transition: 0.5s;
+}
+.head {
+  text-align: center;
+  color: var(--white);
+}
+
+.page {
+  max-width: 940px;
+  padding: 0 20px;
+  margin: 0 auto 100px auto;
+}
+.menu {
+  margin-top: 30px;
+}
+.menu__list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-between;
+  gap: 10px 20px;
+}
+.menu__item {
+  flex: 1 1 25%;
+}
+.menu_btn {
+  padding: 8px 14px;
+  color: var(--orange);
+  font-size: 20px;
+  border: 2px solid var(--orange);
+  transition: 0.2s;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.menu_btn:active {
+  background-color: var(--dark-orange);
+}
+
+.tasks_menu {
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.tasks_menu_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task_menu_input {
+  background-color: var(--white);
+  border: none;
+  height: 50px;
+  padding: 10px 20px 10px 20px;
+  width: 100%;
+  color: var(--black);
+  font-size: 26px;
+  border-radius: 5px;
+}
+
+.tasks_menu_add_button {
+  border-radius: 5px;
+  background-color: var(--orange);
+  width: 100%;
+  height: 44px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--white);
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.tasks_container {
+  margin-top: 20px;
+  background-color: var(--black-50);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.tasks_container_empty_txt {
+  text-align: center;
+  color: var(--white);
+  font-size: 40px;
+  display: none;
+}
+
+.tasks_container_empty .tasks_container_empty_txt {
+  display: block;
+}
+
+.task {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--white);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px 50px;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.task::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  transition: var(--transition) ease-in-out;
+  width: 100%;
+  transform: scaleX(0);
+  background-color: var(--green);
+}
+
+.task__body {
+  z-index: 2;
+}
+
+.task__title {
+  font-weight: 500;
+  font-size: 25px;
+  color: var(--black-100);
+}
+.task__description {
+  color: var(--black-50);
+  font-size: 18px;
+}
+.task_complete::after {
+  transform: scaleX(1);
+}
+
+.task_complete .task__title,
+.task_complete .task__description {
+  text-decoration: line-through;
+}
+
+.task_add {
+  animation: addTask var(--transition) ease-in-out;
+}
+
+.task_delete {
+  animation: deleteTask var(--transition) ease-in-out;
+}
+
+.task_secelected {
+  animation: selectTask 1s ease-in-out 0s infinite alternate-reverse;
+}
+
+.task__btn {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  top: 0;
+  z-index: 2;
+  transition: 0.2s;
+}
+
+.task__options_btn_complete {
+  left: 0;
+  background-image: url(../assets/icons/complete.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+  transition: 0.2s;
+}
+.task__options_btn_complete:hover {
+  background-color: var(--voilet);
+}
+.task__options_btn_delete {
+  right: 0;
+}
+
+.task__options_btn_delete::after,
+.task__options_btn_delete::before {
+  position: absolute;
+  content: "";
+  width: 2px;
+  height: 20px;
+  rotate: 45deg;
+  background-color: var(--gray);
+  top: calc(50% - 10px);
+  left: 50%;
+}
+.task__options_btn_delete::before {
+  rotate: -45deg;
+}
+.task__options_btn_delete:hover {
+  background-color: var(--red);
+}
+.task__options_btn_delete:hover::after,
+.task__options_btn_delete:hover::before {
+  background-color: var(--light-gray);
+}
+
+.error {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  color: var(--white);
+  background-color: var(--red);
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  animation: showError 1s ease-in-out;
+}
+
+.error_shadow {
+  animation: shadowError 1s ease-in-out;
+}
+@keyframes addTask {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes deleteTask {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes selectTask {
+  0% {
+    box-shadow: 0px 0px 5px var(--red);
+  }
+  100% {
+    box-shadow: 0px 0px 20px var(--red);
+  }
+}
+
+@keyframes showError {
+  0% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shadowError {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-60px);
+  }
+}
+
+@media (max-width: 568px) {
+  .head {
+    font-size: 44px;
+  }
+  .menu_btn {
+    font-size: 18px;
+  }
+  .task__title {
+    font-size: 20px;
+  }
+  .task__description {
+    font-size: 16px;
+  }
+  .tasks_container_empty_txt {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 992px) {
+  .menu_btn:hover {
+    background-color: var(--orange);
+    color: var(--white);
+  }
+
+  .tasks_menu_add_button:hover {
+    background-color: var(--dark-orange);
+  }
+}
+
+@media (max-width: 768px) {
+  .task_menu_input {
+    height: 40px;
+    font-size: 23px;
+  }
+  .tasks_menu_add_button {
+    height: 35px;
+    font-size: 18px;
+  }
+}
